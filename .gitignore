@@ -1,0 +1,11 @@
+# Ignore Visual Studio auto-generated files
+.vs/
+
+# Ignore build and temp files
+*.log
+*.tmp
+bin/
+obj/
+
+# Ignore node modules
+node_modules/
