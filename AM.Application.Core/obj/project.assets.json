@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\4TWIN5\\4TWIN5 - S2\\.NET\\AM\\AM.Application.Core\\AM.Application.Core.csproj",
-      "projectName": "AM.Application.Core",
-      "projectPath": "C:\\4TWIN5\\4TWIN5 - S2\\.NET\\AM\\AM.Application.Core\\AM.Application.Core.csproj",
+      "projectUniqueName": "C:\\4TWIN5\\4TWIN5 - S2\\.NET\\AM\\AM.Application.Core\\AM.ApplicationCore.csproj",
+      "projectName": "AM.ApplicationCore",
+      "projectPath": "C:\\4TWIN5\\4TWIN5 - S2\\.NET\\AM\\AM.Application.Core\\AM.ApplicationCore.csproj",
       "packagesPath": "C:\\Users\\ahmed\\.nuget\\packages\\",
       "outputPath": "C:\\4TWIN5\\4TWIN5 - S2\\.NET\\AM\\AM.Application.Core\\obj\\",
       "projectStyle": "PackageReference",
