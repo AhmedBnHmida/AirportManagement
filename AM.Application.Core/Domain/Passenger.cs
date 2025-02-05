@@ -4,45 +4,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AM.Application.Core.Domain
+namespace AM.ApplicationCore.Domain
 {
     public class Passenger
     {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string EmailAddress { get; set; }
         public DateTime BirthDate { get; set; }
-        public string TelNumber { get; set; }
+        public String EmailAddress { get; set; }
+        public String FirstName { get; set; }
+        public int Id { get; set; }
+        public String LastName { get; set; }
         public String PassportNumber { get; set; }
-
-        public IList<Flight> flights { get; set; }
-
+        public int TelNumber { get; set; }
+        //prop de navigation
+        public IList<Flight> Flights { get; set; }
+        //methode toString()
         public override string ToString()
         {
-            return "BirthDate : " + BirthDate
-                + " EmailAddress : " + EmailAddress
-                + " FirstName : " + FirstName
-                + " LastName : " + LastName
-                + " PassportNumber : " + PassportNumber
-                + " TelNumber : " + TelNumber
-                + " id " + Id;
+            return "Birthdate : "+BirthDate+"\n EmailAddress : "+EmailAddress+"\n FirstName : "+FirstName+
+                "\n Id : "+Id+"\n LastName : "+LastName+"\n PassportNumber : "+PassportNumber+"\n TelNumber : "+TelNumber;
         }
-
-        public bool checkProfile(string nom,string prenom)
+        //Polymorphisme
+        public bool CheckProfile(String nom,String prenom)
         {
-            return nom==LastName && prenom== FirstName;
+            return nom == LastName && prenom == FirstName;
         }
-        public bool checkProfile(string nom, string prenom,string email)
+        public bool CheckProfile(String nom, String prenom,String email)
         {
             return nom == LastName && prenom == FirstName && email.Equals(EmailAddress);
         }
-        public bool checkProfile1(string nom, string prenom, string email=null)
-        {
-            if (email==null )
+        public bool CheckProfile1(String nom, String prenom, String email=null)
+        { 
+        if (email==null)
                 return nom == LastName && prenom == FirstName;
-            return nom == FirstName && prenom == LastName && email.Equals(EmailAddress);
+            return nom == LastName && prenom == FirstName && email.Equals(EmailAddress);
         }
-
+        public virtual void PassengerType()
+        {
+            Console.WriteLine("I'm passenger");
+        }
     }
 }

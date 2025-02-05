@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AM.Application.Core.Domain
+namespace AM.ApplicationCore.Domain
 {
     public enum PlaneType
     {
-        Boing, Airbus
+        Boing,Airbus
     }
 }
