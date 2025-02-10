@@ -9,7 +9,7 @@ using AM.ApplicationCore.Interface;
 
 namespace AM.ApplicationCore.Service
 {
-    public class FlightMethods:IFlightMethods
+    public class FlightMethods : IFlightMethods
     {
         public List<Flight> Flights = new List<Flight>();
 
@@ -49,7 +49,7 @@ namespace AM.ApplicationCore.Service
 
         public List<DateTime> GetFlightDates(string destination)
         {
-            List<DateTime> dates = new List<DateTime> ();
+            List<DateTime> dates = new List<DateTime>();
             //for(int i = 0; i < Flights.Count; i++)
             //foreach (Flight i in Flights) 
 
@@ -64,7 +64,7 @@ namespace AM.ApplicationCore.Service
                         where f.Destination == destination
                         select f.FlightDate;
             return query.ToList();
-            
+
         }
 
         public void GetFlights(string filterType, string filterValue)
@@ -99,9 +99,65 @@ namespace AM.ApplicationCore.Service
                         break;
                 }
             }
-           
+
         }
 
+        /*
+
+        //10
+        public void ShowFlightDetails(Plane plane)
+        {
+            var flightDetails = from flight in Flights
+                                where flight.Plane == plane
+                                select new { flight.FlightDate, flight.Destination };
+
+            foreach (var detail in flightDetails)
+            {
+                Console.WriteLine($"Date: {detail.FlightDate}, Destination: {detail.Destination}");
+            }
+        }
+
+        //11
+        public int ProgrammedFlightNumber(DateTime startDate)
+        {
+            DateTime endDate = startDate.AddDays(7);
+            var flightCount = Flights.Count(flight => flight.FlightDate >= startDate && flight.FlightDate <= endDate);
+            return flightCount;
+        }
+
+        //12
+        public double DurationAverage(string destination)
+        {
+            var flights = Flights.Where(flight => flight.Destination == destination).ToList();
+            if (flights.Any())
+            {
+                double averageDuration = flights.Average(flight => flight.EstimatedDuration);
+                return averageDuration;
+            }
+            else
+            {
+                return 0; // Si aucun vol trouvé pour la destination
+            }
+        }
+        //13
+        public List<Flight> OrderedDurationFlights()
+        {
+            var orderedFlights = Flights.OrderByDescending(flight => flight.EstimatedDuration).ToList();
+            return orderedFlights;
+        }
+
+        //14
+        public List<Traveller> SeniorTravellers(Flight flight)
+        {
+            var seniorTravellers = flight.Passengers.OfType<Traveller>()
+                                                    .OrderByDescending(traveller => traveller.Age)
+                                                    .Take(3)
+                                                    .ToList();
+            return seniorTravellers;
+        }
+        */
 
     }
+
+
 }
