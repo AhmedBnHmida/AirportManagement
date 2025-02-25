@@ -13,6 +13,7 @@ namespace AM.ApplicationCore.Service
     {
         public List<Flight> Flights = new List<Flight>();
 
+        public List<Flight> FlightsVide = new List<Flight>();
 
 
         //Avec for
@@ -157,6 +158,104 @@ namespace AM.ApplicationCore.Service
         }
         */
 
+
+        public void ShowFlightDetails(Domain.Plane plane)
+        {
+            //Avec Linq
+
+            //var req = from f in Flights
+            //          where f.plane == plane
+            //          select new { f.Destination, f.FlightDate };
+            //foreach (var q in req)
+            //{
+            //    Console.WriteLine(q.ToString());
+            //}
+
+            //Avec Lamda
+
+            var req = Flights.Where(f => f.Plane == plane).Select(f => new { f.Destination, f.FlightDate });
+            foreach (var q in req)
+            {
+                Console.WriteLine(q.ToString());
+            }
+
+        }
+
+
+
+        public int ProgrammedFlightNumber(DateTime startDate)
+        {
+
+            var query = from f in Flights
+                        where DateTime.Compare(startDate, f.FlightDate) <= 0
+                        && (f.FlightDate - startDate).TotalDays <= 7
+                        select f;
+            return query.Count();
+
+
+        }
+
+
+        public double DurationAverage(string destination)
+
+        //Avec Linq
+        {
+            //var query = from flight in Flights
+            //            where flight.Destination == destination
+            //            select flight.EstimatedDuration;
+            //            return query.Average();
+
+            //Avec Lamda
+
+            return Flights.Where(f => f.Destination == destination).Select(f => f.EstimatedDuration).Average();
+
+        }
+
+
+        public IEnumerable<Flight> OrderedDurationFlights()
+        {// Avec Linq
+
+            //var query = from f in Flights
+            //            orderby f.EstimatedDuration descending
+            //            select f;
+            //return query;
+
+            //Avec Lamda
+
+            return Flights.OrderByDescending(f => f.EstimatedDuration);
+
+
+        }
+
+        public IEnumerable<Traveller> SeniorTravellers(Flight flight)
+        {
+
+            // Avec Linq
+
+            //var req = from f in flight.Passengers.OfType<Traveller>()
+            //          orderby f.BrithDate ascending
+            //          select f;
+            //return req.Take(3);
+
+            //Avec Lamda
+
+            return flight.Passengers.OfType<Traveller>().OrderBy(f => f.BirthDate).Take(3);
+
+        }
+
+        public IEnumerable<IGrouping<string, Flight>> DestinationGroupFlihghts()
+        {
+            var req = from f in Flights
+                      group f by f.Destination;
+            foreach (var g in req)
+            {
+                Console.WriteLine(g.Key);
+                foreach (var v in g)
+
+                    Console.WriteLine("Décollage : " + v.FlightDate);
+            }
+            return req;
+        }
     }
 
 

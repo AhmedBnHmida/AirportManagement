@@ -11,15 +11,14 @@ namespace AM.ApplicationCore.Interface
     {
         public List<DateTime> GetFlightDates(string destination);
         public void GetFlights(string filterType, string filterValue);
-        /*
+        
         //10 -- 14
         public void ShowFlightDetails(Plane plane);
         public int ProgrammedFlightNumber(DateTime startDate);
         public double DurationAverage(string destination);
-        public List<Flight> OrderedDurationFlights();
-        public List<Traveller> SeniorTravellers(Flight flight);
-        */
-        
+        public IEnumerable<Flight> OrderedDurationFlights();
+        public IEnumerable<Traveller> SeniorTravellers(Flight flight);
+        public IEnumerable<IGrouping<string, Flight>> DestinationGroupFlihghts();
 
     }
 }
