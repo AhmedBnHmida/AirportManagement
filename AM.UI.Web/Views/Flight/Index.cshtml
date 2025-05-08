@@ -76,7 +76,7 @@
 
             <td>
                 @Html.ActionLink("Edit", "Edit", new {  id=item.FlightId  }) |
-                @Html.ActionLink("Details", "Details", new {  id=item.FlightId  }) |
+                    <a asp-controller="Plane" asp-action="Details" asp-route-id="@item.planefk">PlaneDetails</a> |
                 @Html.ActionLink("Delete", "Delete", new {  id=item.FlightId  })
             </td>
             <td>
